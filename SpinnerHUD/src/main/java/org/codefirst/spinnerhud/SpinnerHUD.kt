@@ -17,6 +17,11 @@ class SpinnerHUD(context: Context) {
         return this
     }
 
+    fun setLabel(label: String): SpinnerHUD {
+        dialog.label = label
+        return this
+    }
+
     fun dismiss() {
         if (isShowing) {
             dialog.dismiss()

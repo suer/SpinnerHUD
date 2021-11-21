@@ -9,11 +9,15 @@ import android.view.WindowManager
 import android.graphics.drawable.ColorDrawable
 
 import android.os.Bundle
+import android.view.View
 import android.view.Window
 import android.widget.FrameLayout
+import android.widget.TextView
 
 class SpinnerDialog(context: Context): Dialog(context) {
     private var backgroundLayout: BackgroundLayout? = null
+
+    public var label:String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +43,10 @@ class SpinnerDialog(context: Context): Dialog(context) {
         findViewById<FrameLayout>(R.id.container).also {
             it.removeAllViews()
             it.addView(SpinnerView(context))
+        }
+        findViewById<TextView>(R.id.label).apply {
+            text = label
+            visibility = if (label.isBlank()) View.GONE else View.VISIBLE
         }
     }
 }
