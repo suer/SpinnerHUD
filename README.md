@@ -5,6 +5,8 @@ A HUD library for Android.
 
 Inspired by [Kaopiz/KProgressHUD](https://github.com/Kaopiz/KProgressHUD)
 
+![](https://raw.githubusercontent.com/suer/SpinnerHUD/master/demo/screenshots/demo.gif)
+
 ## Compatibility
 
 Android8(API level 26) or later.
