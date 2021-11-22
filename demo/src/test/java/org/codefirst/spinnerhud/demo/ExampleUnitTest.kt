@@ -1,4 +1,4 @@
-package org.codefirst.spinnerhud
+package org.codefirst.spinnerhud.demo
 
 import org.junit.Test
 

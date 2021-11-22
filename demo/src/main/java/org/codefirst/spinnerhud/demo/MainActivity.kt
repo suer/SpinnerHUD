@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.widget.Button
-import org.codefirst.spinnerhud.R
 import org.codefirst.spinnerhud.SpinnerHUD
 
 class MainActivity : AppCompatActivity() {

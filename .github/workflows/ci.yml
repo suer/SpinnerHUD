@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v2
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'zulu'
+          java-version: '11'
+      - uses: actions/cache@v2.1.6
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+#      - name: Run ktlint
+#        run: ./gradlew ktlint
+      - name: Build SpinnerHUD
+        run: |
+          cd SpinnerHUD
+          ../gradlew test build
+      - name: Build demo
+        run: |
+          cd demo
+          ../gradlew test build
+      - name: Upload jar files
+        uses: actions/upload-artifact@v2
+        with:
+          name: jar
+          path: |
+            SpinnerHUD/build/output/SpinnerHUD-release.aar
+

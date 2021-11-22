@@ -7,7 +7,7 @@ android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "org.codefirst.spinnerhud"
+        applicationId "org.codefirst.spinnerhud.demo"
         minSdk 26
         targetSdk 31
         versionCode 1
