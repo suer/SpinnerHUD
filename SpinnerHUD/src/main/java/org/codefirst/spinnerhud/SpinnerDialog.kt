@@ -17,7 +17,7 @@ import android.widget.TextView
 class SpinnerDialog(context: Context): Dialog(context) {
     private var backgroundLayout: BackgroundLayout? = null
 
-    public var label:String = ""
+    var label:String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
