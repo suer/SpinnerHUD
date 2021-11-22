@@ -26,9 +26,7 @@ class SpinnerDialog(context: Context): Dialog(context) {
         window?.apply {
             setBackgroundDrawable(ColorDrawable(0))
             addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
-        }?.also { window ->
-            val layoutParams: WindowManager.LayoutParams = window.attributes
-            window.attributes = layoutParams.apply {
+            attributes.apply {
                 dimAmount = 0.5f
                 gravity = Gravity.CENTER
             }
