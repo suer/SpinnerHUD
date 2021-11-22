@@ -2,20 +2,17 @@ package org.codefirst.spinnerhud
 
 import android.app.Dialog
 import android.content.Context
-import android.view.Gravity
-
-import android.view.WindowManager
-
 import android.graphics.drawable.ColorDrawable
-
 import android.os.Bundle
+import android.view.Gravity
 import android.view.View
 import android.view.Window
+import android.view.WindowManager
 import android.widget.FrameLayout
 import android.widget.TextView
 
-class SpinnerDialog(context: Context): Dialog(context) {
-    var label:String = ""
+class SpinnerDialog(context: Context) : Dialog(context) {
+    var label: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

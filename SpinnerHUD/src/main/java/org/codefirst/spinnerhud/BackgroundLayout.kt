@@ -1,12 +1,11 @@
 package org.codefirst.spinnerhud
 
 import android.content.Context
+import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
 import android.widget.LinearLayout
 
-import android.graphics.drawable.GradientDrawable
-
-class BackgroundLayout: LinearLayout {
+class BackgroundLayout : LinearLayout {
     constructor(context: Context?) : super(context) {
         initialize()
     }

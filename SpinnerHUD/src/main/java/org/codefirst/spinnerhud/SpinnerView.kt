@@ -1,12 +1,11 @@
 package org.codefirst.spinnerhud
 
 import android.content.Context
-import android.util.AttributeSet
-
 import android.graphics.Canvas
+import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatImageView
 
-class SpinnerView: AppCompatImageView {
+class SpinnerView : AppCompatImageView {
     companion object {
         private const val STEP_DIGREE: Float = 30f
         private const val FRAME_TIME: Long = 1000 / 12
@@ -16,11 +15,11 @@ class SpinnerView: AppCompatImageView {
     var attached = false
     var runnable: Runnable? = null
 
-    constructor(context: Context): super(context) {
+    constructor(context: Context) : super(context) {
         initialize()
     }
 
-    constructor(context: Context, attrs: AttributeSet): super(context, attrs) {
+    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         initialize()
     }
 
