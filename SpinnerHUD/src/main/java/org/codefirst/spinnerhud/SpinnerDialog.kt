@@ -15,8 +15,6 @@ import android.widget.FrameLayout
 import android.widget.TextView
 
 class SpinnerDialog(context: Context): Dialog(context) {
-    private var backgroundLayout: BackgroundLayout? = null
-
     var label:String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +35,6 @@ class SpinnerDialog(context: Context): Dialog(context) {
     }
 
     private fun initViews() {
-        backgroundLayout = findViewById(R.id.background);
         findViewById<FrameLayout>(R.id.container).also {
             it.removeAllViews()
             it.addView(SpinnerView(context))
