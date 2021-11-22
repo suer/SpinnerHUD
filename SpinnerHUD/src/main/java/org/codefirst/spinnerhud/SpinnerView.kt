@@ -7,11 +7,11 @@ import androidx.appcompat.widget.AppCompatImageView
 
 class SpinnerView : AppCompatImageView {
     companion object {
-        private const val STEP_DIGREE: Float = 30f
+        private const val STEP_DEGREE: Float = 30f
         private const val FRAME_TIME: Long = 1000 / 12
     }
 
-    var currentDigree = 0f
+    var currentDegree = 0f
     var attached = false
     var runnable: Runnable? = null
 
@@ -27,8 +27,8 @@ class SpinnerView : AppCompatImageView {
         setImageResource(R.drawable.spinner)
         runnable = object : Runnable {
             override fun run() {
-                currentDigree += STEP_DIGREE
-                currentDigree = if (currentDigree < 360) currentDigree else currentDigree - 360
+                currentDegree += STEP_DEGREE
+                currentDegree = if (currentDegree < 360) currentDegree else currentDegree - 360
                 invalidate()
                 if (attached) {
                     postDelayed(this, FRAME_TIME)
@@ -38,7 +38,7 @@ class SpinnerView : AppCompatImageView {
     }
 
     override fun onDraw(canvas: Canvas) {
-        canvas.rotate(currentDigree, width / 2f, height / 2f)
+        canvas.rotate(currentDegree, width / 2f, height / 2f)
         super.onDraw(canvas)
     }
 
