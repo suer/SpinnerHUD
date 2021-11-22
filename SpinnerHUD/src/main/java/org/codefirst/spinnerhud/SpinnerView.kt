@@ -13,7 +13,7 @@ class SpinnerView : AppCompatImageView {
 
     var currentDegree = 0f
     var attached = false
-    var runnable: Runnable? = null
+    private var runnable: Runnable? = null
 
     constructor(context: Context) : super(context) {
         initialize()

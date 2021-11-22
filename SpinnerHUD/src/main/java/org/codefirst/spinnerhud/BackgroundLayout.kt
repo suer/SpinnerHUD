@@ -17,7 +17,7 @@ class BackgroundLayout : LinearLayout {
     private fun initialize() {
         background = GradientDrawable().apply {
             shape = GradientDrawable.RECTANGLE
-            setColor(context.resources.getColor(R.color.spinnerhud_background_color))
+            setColor(context.resources.getColor(R.color.spinnerhud_background_color, context.theme))
             cornerRadius = 10f
         }
     }
