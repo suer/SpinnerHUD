@@ -25,6 +25,8 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
+      - name: Setup Android problem matchers
+        uses: jonasb/android-problem-matchers-action@v1
       - name: Run ktlint
         run: ./gradlew ktlint
       - name: Build SpinnerHUD
