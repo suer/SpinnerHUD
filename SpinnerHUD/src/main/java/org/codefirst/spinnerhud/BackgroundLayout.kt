@@ -18,7 +18,7 @@ class BackgroundLayout : LinearLayout {
         background = GradientDrawable().apply {
             shape = GradientDrawable.RECTANGLE
             setColor(context.resources.getColor(R.color.spinnerhud_background_color, context.theme))
-            cornerRadius = 10f
+            cornerRadius = context.resources.displayMetrics.density * 10
         }
     }
 }
