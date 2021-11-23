@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         findViewById<Button>(R.id.button_hud)?.setOnClickListener {
             val hud = SpinnerHUD.create(this).setLabel("Loading.....").show()
-            Handler().postDelayed(
+            Handler(mainLooper).postDelayed(
                 {
                     hud.dismiss()
                 },
