@@ -1,0 +1,23 @@
+version: 2
+updates:
+  - package-ecosystem: "gradle"
+    directory: "/SpinnerHUD/"
+    schedule:
+      interval: "weekly"
+      timezone: "Asia/Tokyo"
+      day: "friday"
+
+  - package-ecosystem: "gradle"
+    directory: "/demo/"
+    schedule:
+      interval: "weekly"
+      timezone: "Asia/Tokyo"
+      day: "friday"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      timezone: "Asia/Tokyo"
+      day: "friday"
+
