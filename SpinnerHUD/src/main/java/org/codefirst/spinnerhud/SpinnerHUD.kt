@@ -22,6 +22,11 @@ class SpinnerHUD(context: Context) {
         return this
     }
 
+    fun setCancellable(isCancellable: Boolean): SpinnerHUD {
+        dialog.setCancelable(isCancellable)
+        return this
+    }
+
     fun dismiss() {
         if (isShowing) {
             dialog.dismiss()

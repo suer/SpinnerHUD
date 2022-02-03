@@ -41,6 +41,7 @@ Add package to app level build.gradle.
 // show HUD
 val hud = SpinnerHUD.create(context)
               .setLabel("Loading.....")
+              .setCancellable(true)
               .show()
 
 // dissmiss HUD
