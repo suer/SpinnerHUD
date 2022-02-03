@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         findViewById<Button>(R.id.button_hud)?.setOnClickListener {
-            val hud = SpinnerHUD.create(this).setLabel("Loading.....").show()
+            val hud = SpinnerHUD.create(this).setLabel("Loading.....").setCancellable(true).show()
             Handler(mainLooper).postDelayed(
                 {
                     hud.dismiss()
