@@ -32,7 +32,7 @@ Add this repository definition to settigs.gradle or build.gradle.
 Add package to app level build.gradle.
 
 ```groovy
-    implementation 'org.codefirst.spinnerhud:spinner-hud:0.1.0-SNAPSHOT'
+    implementation 'org.codefirst.spinnerhud:spinner-hud:0.1.0'
 ```
 
 ## Usage
