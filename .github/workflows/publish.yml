@@ -1,4 +1,4 @@
-name: Release
+name: Publish
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  build:
+  publish:
     env:
       USERNAME: suer
       TOKEN: ${{ secrets.GITHUB_TOKEN }}
