@@ -50,7 +50,7 @@ android {
         publications {
             gpr(MavenPublication) {
                 group 'org.codefirst.spinnerhud'
-                version = '0.2.0'
+                version = '0.3.0-SNAPSHOT'
                 artifactId "spinner-hud"
                 artifact(sourceJar)
                 artifact("$buildDir/outputs/aar/SpinnerHUD-release.aar")
