@@ -27,9 +27,5 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
-      - name: Run ktlint
-        run: ./gradlew ktlint
       - name: Build SpinnerHUD
-        run: |
-          cd SpinnerHUD
-          ../gradlew test build publish
+        run: ./gradlew :SpinnerHUD:ktlint :SpinnerHUD:test :SpinnerHUD:build :SpinnerHUD:publish
