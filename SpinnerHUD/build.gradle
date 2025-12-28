@@ -10,6 +10,7 @@ task sourceJar(type: Jar) {
 }
 
 android {
+    namespace 'org.codefirst.spinnerhud'
     compileSdk 31
 
     defaultConfig {
