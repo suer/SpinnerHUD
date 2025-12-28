@@ -10,11 +10,12 @@ task sourceJar(type: Jar) {
 }
 
 android {
-    compileSdk 31
+    namespace 'org.codefirst.spinnerhud'
+    compileSdk = 36
 
     defaultConfig {
         minSdk 26
-        targetSdk 31
+        targetSdk 36
         versionCode 1
         versionName "1.0"
 
@@ -35,26 +36,26 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+}
 
-    publishing {
-        repositories {
-            maven {
-                name = "GitHubPackages"
-                url = uri("https://maven.pkg.github.com/suer/SpinnerHUD")
-                credentials {
-                    username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
-                    password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
-                }
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/suer/SpinnerHUD")
+            credentials {
+                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
             }
         }
-        publications {
-            gpr(MavenPublication) {
-                group 'org.codefirst.spinnerhud'
-                version = '0.3.0-SNAPSHOT'
-                artifactId "spinner-hud"
-                artifact(sourceJar)
-                artifact("$buildDir/outputs/aar/SpinnerHUD-release.aar")
-            }
+    }
+    publications {
+        gpr(MavenPublication) {
+            group 'org.codefirst.spinnerhud'
+            version = '0.3.0-SNAPSHOT'
+            artifactId "spinner-hud"
+            artifact(sourceJar)
+            artifact("$buildDir/outputs/aar/SpinnerHUD-release.aar")
         }
     }
 }
