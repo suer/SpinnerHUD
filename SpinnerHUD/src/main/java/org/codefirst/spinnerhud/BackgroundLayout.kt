@@ -15,10 +15,11 @@ class BackgroundLayout : LinearLayout {
     }
 
     private fun initialize() {
-        background = GradientDrawable().apply {
-            shape = GradientDrawable.RECTANGLE
-            setColor(context.resources.getColor(R.color.spinnerhud_background_color, context.theme))
-            cornerRadius = context.resources.displayMetrics.density * 10
-        }
+        background =
+            GradientDrawable().apply {
+                shape = GradientDrawable.RECTANGLE
+                setColor(context.resources.getColor(R.color.spinnerhud_background_color, context.theme))
+                cornerRadius = context.resources.displayMetrics.density * 10
+            }
     }
 }

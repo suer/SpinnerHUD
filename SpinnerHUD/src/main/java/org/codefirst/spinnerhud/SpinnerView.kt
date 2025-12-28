@@ -25,16 +25,17 @@ class SpinnerView : AppCompatImageView {
 
     private fun initialize() {
         setImageResource(R.drawable.spinner)
-        runnable = object : Runnable {
-            override fun run() {
-                currentDegree += STEP_DEGREE
-                currentDegree = if (currentDegree < 360) currentDegree else currentDegree - 360
-                invalidate()
-                if (attached) {
-                    postDelayed(this, FRAME_TIME)
+        runnable =
+            object : Runnable {
+                override fun run() {
+                    currentDegree += STEP_DEGREE
+                    currentDegree = if (currentDegree < 360) currentDegree else currentDegree - 360
+                    invalidate()
+                    if (attached) {
+                        postDelayed(this, FRAME_TIME)
+                    }
                 }
             }
-        }
     }
 
     override fun onDraw(canvas: Canvas) {
