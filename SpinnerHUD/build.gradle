@@ -71,7 +71,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
-    ktlint "com.pinterest:ktlint:0.51.0-FINAL"
+    ktlint "com.pinterest.ktlint:ktlint-cli:1.8.0"
 }
 
 task ktlint(type: JavaExec, group: "verification") {
