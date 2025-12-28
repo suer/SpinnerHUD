@@ -77,7 +77,7 @@ dependencies {
 tasks.register('ktlint', JavaExec) {
     description = "Check Kotlin code style."
     classpath = configurations.ktlint
-    main = "com.pinterest.ktlint.Main"
+    mainClass = "com.pinterest.ktlint.Main"
     args "src/**/*.kt"
 }
 check.dependsOn ktlint
@@ -85,6 +85,6 @@ check.dependsOn ktlint
 tasks.register('ktlintFormat', JavaExec) {
     description = "Fix Kotlin code style deviations."
     classpath = configurations.ktlint
-    main = "com.pinterest.ktlint.Main"
+    mainClass = "com.pinterest.ktlint.Main"
     args "-F", "src/**/*.kt"
 }
