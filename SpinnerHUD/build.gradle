@@ -38,24 +38,26 @@ android {
     }
 }
 
-publishing {
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/suer/SpinnerHUD")
-            credentials {
-                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
-                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+afterEvaluate {
+    publishing {
+        repositories {
+            maven {
+                name = "GitHubPackages"
+                url = uri("https://maven.pkg.github.com/suer/SpinnerHUD")
+                credentials {
+                    username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+                    password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+                }
             }
         }
-    }
-    publications {
-        gpr(MavenPublication) {
-            group = 'org.codefirst.spinnerhud'
-            version = '0.3.0-SNAPSHOT'
-            artifactId = "spinner-hud"
-            artifact(sourceJar)
-            artifact("$buildDir/outputs/aar/SpinnerHUD-release.aar")
+        publications {
+            gpr(MavenPublication) {
+                group = 'org.codefirst.spinnerhud'
+                version = '0.3.0-SNAPSHOT'
+                artifactId = "spinner-hud"
+                artifact(sourceJar)
+                artifact(tasks.named("bundleReleaseAar"))
+            }
         }
     }
 }
