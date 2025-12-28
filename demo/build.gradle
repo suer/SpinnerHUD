@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace 'org.codefirst.spinnerhud.demo'
+    namespace = 'org.codefirst.spinnerhud.demo'
     compileSdk = 36
 
     defaultConfig {

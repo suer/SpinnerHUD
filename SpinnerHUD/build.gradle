@@ -4,13 +4,13 @@ plugins {
     id 'maven-publish'
 }
 
-task sourceJar(type: Jar) {
+tasks.register('sourceJar', Jar) {
     from android.sourceSets.main.java.srcDirs
     archiveClassifier.set("sources")
 }
 
 android {
-    namespace 'org.codefirst.spinnerhud'
+    namespace = 'org.codefirst.spinnerhud'
     compileSdk = 36
 
     defaultConfig {
@@ -51,9 +51,9 @@ publishing {
     }
     publications {
         gpr(MavenPublication) {
-            group 'org.codefirst.spinnerhud'
+            group = 'org.codefirst.spinnerhud'
             version = '0.3.0-SNAPSHOT'
-            artifactId "spinner-hud"
+            artifactId = "spinner-hud"
             artifact(sourceJar)
             artifact("$buildDir/outputs/aar/SpinnerHUD-release.aar")
         }
@@ -74,17 +74,17 @@ dependencies {
     ktlint "com.pinterest.ktlint:ktlint-cli:1.8.0"
 }
 
-task ktlint(type: JavaExec, group: "verification") {
+tasks.register('ktlint', JavaExec) {
     description = "Check Kotlin code style."
     classpath = configurations.ktlint
-    main = "com.pinterest.ktlint.Main"
+    mainClass = "com.pinterest.ktlint.Main"
     args "src/**/*.kt"
 }
 check.dependsOn ktlint
 
-task ktlintFormat(type: JavaExec, group: "formatting") {
+tasks.register('ktlintFormat', JavaExec) {
     description = "Fix Kotlin code style deviations."
     classpath = configurations.ktlint
-    main = "com.pinterest.ktlint.Main"
+    mainClass = "com.pinterest.ktlint.Main"
     args "-F", "src/**/*.kt"
 }
