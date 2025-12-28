@@ -2,7 +2,9 @@ package org.codefirst.spinnerhud
 
 import android.content.Context
 
-class SpinnerHUD(context: Context) {
+class SpinnerHUD(
+    context: Context,
+) {
     companion object {
         fun create(context: Context) = SpinnerHUD(context)
     }
