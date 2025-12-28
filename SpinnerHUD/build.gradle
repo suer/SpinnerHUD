@@ -10,7 +10,7 @@ tasks.register('sourceJar', Jar) {
 }
 
 android {
-    namespace 'org.codefirst.spinnerhud'
+    namespace = 'org.codefirst.spinnerhud'
     compileSdk = 36
 
     defaultConfig {
@@ -51,9 +51,9 @@ publishing {
     }
     publications {
         gpr(MavenPublication) {
-            group 'org.codefirst.spinnerhud'
+            group = 'org.codefirst.spinnerhud'
             version = '0.3.0-SNAPSHOT'
-            artifactId "spinner-hud"
+            artifactId = "spinner-hud"
             artifact(sourceJar)
             artifact("$buildDir/outputs/aar/SpinnerHUD-release.aar")
         }
