@@ -11,11 +11,11 @@ task sourceJar(type: Jar) {
 
 android {
     namespace 'org.codefirst.spinnerhud'
-    compileSdk 31
+    compileSdk = 36
 
     defaultConfig {
         minSdk 26
-        targetSdk 31
+        targetSdk 36
         versionCode 1
         versionName "1.0"
 
