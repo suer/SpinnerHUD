@@ -30,13 +30,9 @@ jobs:
       - name: Run ktlint
         run: ./gradlew ktlint
       - name: Build SpinnerHUD
-        run: |
-          cd SpinnerHUD
-          ../gradlew test build
+        run: ./gradlew :SpinnerHUD:test :SpinnerHUD:build
       - name: Build demo
-        run: |
-          cd demo
-          ../gradlew test build
+        run: ./gradlew :demo:test :demo:build
       - name: Upload jar files
         uses: actions/upload-artifact@v6
         with:
