@@ -33,10 +33,9 @@ jobs:
         run: ./gradlew :SpinnerHUD:test :SpinnerHUD:build
       - name: Build demo
         run: ./gradlew :demo:test :demo:build
-      - name: Upload jar files
+      - name: Upload aar files
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: jar
-          path: |
-            SpinnerHUD/build/output/SpinnerHUD-release.aar
+          name: aar
+          path: SpinnerHUD/build/outputs/aar/SpinnerHUD-release.aar
 
