@@ -1,6 +1,7 @@
 package org.codefirst.spinnerhud.demo
 
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.heightIn
@@ -21,28 +22,39 @@ import org.codefirst.spinnerhud.demo.ui.theme.SpinnerHUDTheme
 
 @Composable
 fun MainScreen(
-    onShowHudClick: () -> Unit,
+    onShowViewHudClick: () -> Unit,
+    onShowComposeHudClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Box(
+    Column(
         modifier = modifier.fillMaxSize().padding(top = 200.dp),
-        contentAlignment = Alignment.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
-        // Mimic the MaterialComponents (M2) button style used by the XML theme
-        Button(
-            onClick = onShowHudClick,
-            modifier = Modifier.heightIn(min = 36.dp),
-            shape = RoundedCornerShape(4.dp),
-            contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
-            elevation = ButtonDefaults.buttonElevation(defaultElevation = 2.dp),
-        ) {
-            Text(
-                text = "Button".uppercase(),
-                fontSize = 14.sp,
-                fontWeight = FontWeight.Medium,
-                letterSpacing = 0.0892.em,
-            )
-        }
+        DemoButton(text = "View HUD", onClick = onShowViewHudClick)
+        DemoButton(text = "Compose HUD", onClick = onShowComposeHudClick)
+    }
+}
+
+@Composable
+private fun DemoButton(
+    text: String,
+    onClick: () -> Unit,
+) {
+    // Mimic the MaterialComponents (M2) button style used by the XML theme
+    Button(
+        onClick = onClick,
+        modifier = Modifier.heightIn(min = 36.dp),
+        shape = RoundedCornerShape(4.dp),
+        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
+        elevation = ButtonDefaults.buttonElevation(defaultElevation = 2.dp),
+    ) {
+        Text(
+            text = text.uppercase(),
+            fontSize = 14.sp,
+            fontWeight = FontWeight.Medium,
+            letterSpacing = 0.0892.em,
+        )
     }
 }
 
@@ -50,6 +62,6 @@ fun MainScreen(
 @Composable
 private fun MainScreenPreview() {
     SpinnerHUDTheme {
-        MainScreen(onShowHudClick = {})
+        MainScreen(onShowViewHudClick = {}, onShowComposeHudClick = {})
     }
 }
