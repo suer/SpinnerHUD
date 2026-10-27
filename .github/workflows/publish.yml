@@ -5,8 +5,13 @@ on:
     branches:
       - master
 
+permissions: {}
+
 jobs:
   publish:
+    permissions:
+      contents: read
+      packages: write
     env:
       USERNAME: suer
       TOKEN: ${{ secrets.GITHUB_TOKEN }}
