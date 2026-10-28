@@ -9,6 +9,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
@@ -19,11 +20,13 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.rotate
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import androidx.compose.ui.window.DialogWindowProvider
 import kotlinx.coroutines.delay
 import kotlin.math.cos
 import kotlin.math.sin
@@ -33,6 +36,7 @@ import kotlin.time.toDuration
 private const val BAR_COUNT = 12
 private const val STEP_DEGREE = 360f / BAR_COUNT
 private const val FRAME_TIME_MILLIS = 1000L / 12
+private const val DIM_AMOUNT = 0.5f
 private val BackgroundColor = Color(0xB1000000)
 
 @Composable
@@ -50,6 +54,8 @@ fun SpinnerHUD(
                 dismissOnClickOutside = false,
             ),
     ) {
+        val dialogWindow = (LocalView.current.parent as? DialogWindowProvider)?.window
+        SideEffect { dialogWindow?.setDimAmount(DIM_AMOUNT) }
         Column(
             modifier =
                 modifier
