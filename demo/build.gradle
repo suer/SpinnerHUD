@@ -48,4 +48,5 @@ dependencies {
     androidTestImplementation libs.androidx.compose.ui.test.junit4
 
     implementation project(':SpinnerHUD')
+    implementation project(':SpinnerHUDCompose')
 }

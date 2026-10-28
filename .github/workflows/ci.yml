@@ -37,6 +37,8 @@ jobs:
         run: ./gradlew ktlint
       - name: Build SpinnerHUD
         run: ./gradlew :SpinnerHUD:test :SpinnerHUD:build
+      - name: Build SpinnerHUDCompose
+        run: ./gradlew :SpinnerHUDCompose:test :SpinnerHUDCompose:build
       - name: Build demo
         run: ./gradlew :demo:test :demo:build
       - name: Upload aar files

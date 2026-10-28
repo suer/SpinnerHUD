@@ -17,16 +17,40 @@ class MainScreenTest {
     val composeTestRule = createComposeRule()
 
     @Test
-    fun clickingButtonInvokesCallback() {
-        var clickCount = 0
+    fun clickingViewHudButtonInvokesCallback() {
+        var viewCount = 0
+        var composeCount = 0
         composeTestRule.setContent {
             SpinnerHUDTheme {
-                MainScreen(onShowHudClick = { clickCount++ })
+                MainScreen(
+                    onShowViewHudClick = { viewCount++ },
+                    onShowComposeHudClick = { composeCount++ },
+                )
             }
         }
 
-        composeTestRule.onNodeWithText("BUTTON").assertIsDisplayed().performClick()
+        composeTestRule.onNodeWithText("VIEW HUD").assertIsDisplayed().performClick()
 
-        assertEquals(1, clickCount)
+        assertEquals(1, viewCount)
+        assertEquals(0, composeCount)
+    }
+
+    @Test
+    fun clickingComposeHudButtonInvokesCallback() {
+        var viewCount = 0
+        var composeCount = 0
+        composeTestRule.setContent {
+            SpinnerHUDTheme {
+                MainScreen(
+                    onShowViewHudClick = { viewCount++ },
+                    onShowComposeHudClick = { composeCount++ },
+                )
+            }
+        }
+
+        composeTestRule.onNodeWithText("COMPOSE HUD").assertIsDisplayed().performClick()
+
+        assertEquals(0, viewCount)
+        assertEquals(1, composeCount)
     }
 }

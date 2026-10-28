@@ -1,0 +1,98 @@
+plugins {
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.compose)
+    id 'maven-publish'
+}
+
+android {
+    namespace = 'org.codefirst.spinnerhud.compose'
+    compileSdk = 37
+
+    defaultConfig {
+        minSdk 26
+        targetSdk 37
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures {
+        compose true
+    }
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+        }
+    }
+}
+
+kotlin {
+    jvmToolchain(17)
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/suer/SpinnerHUD")
+            credentials {
+                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+            }
+        }
+    }
+    publications {
+        gpr(MavenPublication) {
+            group = 'org.codefirst.spinnerhud'
+            version = '0.4.0-SNAPSHOT'
+            artifactId = "spinner-hud-compose"
+
+            afterEvaluate {
+                from components.release
+            }
+        }
+    }
+}
+
+configurations {
+    ktlint
+}
+
+dependencies {
+    implementation platform(libs.androidx.compose.bom)
+    implementation libs.androidx.compose.foundation
+    implementation libs.androidx.compose.ui
+    testImplementation libs.junit
+    androidTestImplementation libs.androidx.junit
+    androidTestImplementation libs.androidx.espresso.core
+    androidTestImplementation platform(libs.androidx.compose.bom)
+    androidTestImplementation libs.androidx.compose.ui.test.junit4
+    debugImplementation libs.androidx.compose.ui.test.manifest
+
+    ktlint libs.ktlint.cli
+}
+
+tasks.register('ktlint', JavaExec) {
+    description = "Check Kotlin code style."
+    classpath = configurations.ktlint
+    mainClass = "com.pinterest.ktlint.Main"
+    args "src/**/*.kt"
+}
+check.dependsOn ktlint
+
+tasks.register('ktlintFormat', JavaExec) {
+    description = "Fix Kotlin code style deviations."
+    classpath = configurations.ktlint
+    mainClass = "com.pinterest.ktlint.Main"
+    args "-F", "src/**/*.kt"
+}

@@ -35,6 +35,12 @@ Add package to app level build.gradle.
     implementation 'org.codefirst.spinnerhud:spinner-hud:0.3.0'
 ```
 
+For Jetpack Compose, use the Compose module instead.
+
+```groovy
+    implementation 'org.codefirst.spinnerhud:spinner-hud-compose:0.4.0'
+```
+
 ## Usage
 
 ```kotlin
@@ -46,4 +52,18 @@ val hud = SpinnerHUD.create(context)
 
 // dissmiss HUD
 hud.dismiss()
+```
+
+### Jetpack Compose
+
+```kotlin
+var loading by remember { mutableStateOf(false) }
+
+if (loading) {
+    SpinnerHUD(
+        onDismissRequest = { loading = false },
+        label = "Loading.....",
+        cancellable = true,
+    )
+}
 ```
