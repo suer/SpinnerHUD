@@ -54,7 +54,7 @@ publishing {
     publications {
         gpr(MavenPublication) {
             group = 'org.codefirst.spinnerhud'
-            version = '0.4.0'
+            version = '0.5.0-SNAPSHOT'
             artifactId = "spinner-hud-compose"
 
             afterEvaluate {
